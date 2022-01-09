@@ -1,0 +1,6 @@
+kernel/linux/
+user/musl/
+user/root/
+user/initramfs.gz
+obj/
+bin/

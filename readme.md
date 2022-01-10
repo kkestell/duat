@@ -8,7 +8,7 @@
 
 ```
 $ docker build --tag=duat .
-$ docker run -it --rm --mount type=bind,source="$(pwd)",target=/home/ra duat /bin/bash
+$ docker run -it --mount type=bind,source="$(pwd)/iso",target=/home/ra/iso duat /bin/bash
 ```
 
 ### Kernel

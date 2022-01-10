@@ -2,8 +2,9 @@
 #include <unistd.h>
 
 int main() {
+    printf("DUAT\n");
     while (1) {
-        printf("Duat\n");
         sleep(1);
     }
+    return 0;
 }

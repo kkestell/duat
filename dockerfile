@@ -1,5 +1,8 @@
-FROM silkeh/clang:13
+FROM ubuntu:21.10
+ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y \
+  software-properties-common \
+  make \
   git \
   curl \
   xz-utils \
@@ -9,7 +12,7 @@ RUN apt-get update && apt-get install -y \
   libelf-dev \
   cpio \
   ncurses-dev \
+  wget \
+  libssl-dev \
   && rm -rf /var/lib/apt/lists/*
-RUN useradd -ms /bin/bash ra
-USER ra
-WORKDIR /home/ra
+WORKDIR /duat

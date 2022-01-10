@@ -1,4 +1,4 @@
-ROOT := /home/duat/user/root
+ROOT := /home/ra/user/root
 PREFIX := bin
 
 all: bin/init

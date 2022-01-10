@@ -4,3 +4,6 @@ user/root/
 user/initramfs.gz
 obj/
 bin/
+
+\.bash_history
+\.DS_Store

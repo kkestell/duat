@@ -1,34 +1,3 @@
 # Duat
 
 > Slowly goes the Boat of Ra, passing through the Duat, to regions of thick darkness, of horror and dismay, where the dead have their habitations, and Apep lies in wait for the coming of Ra. Thus passes the first hour of the night, and the second hour is at hand.
-
-## Build
-
-### Docker
-
-```
-$ docker build --tag=duat .
-$ docker run -it --mount type=bind,source="$(pwd)/iso",target=/home/ra/iso duat /bin/bash
-```
-
-### Kernel
-
-```
-$ cd kernel
-$ make -j8
-```
-
-### User
-
-```
-$ cd user
-$ ./build.sh
-```
-
-## Run
-
-### QEMU
-
-```
-$ ./qemu.sh
-```

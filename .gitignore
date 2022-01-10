@@ -1,5 +1,5 @@
-deps/
-build/
+iso/initramfs.gz
+iso/kernel.gz
 
 \.bash_history
 \.DS_Store

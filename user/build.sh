@@ -28,4 +28,4 @@ popd # src
 
 pushd root
 find . | cpio -oHnewc | gzip --best > ../initramfs.gz
-popd
+popd # root

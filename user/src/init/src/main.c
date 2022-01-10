@@ -3,7 +3,7 @@
 
 int main() {
     while (1) {
-        printf("WOW!\n");
+        printf("Duat\n");
         sleep(1);
     }
 }

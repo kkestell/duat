@@ -8,7 +8,7 @@
 
 ```
 $ docker build --tag=duat .
-$ docker run -it --rm --mount type=bind,source="$(pwd)",target=/home/duat duat /bin/bash
+$ docker run -it --rm --mount type=bind,source="$(pwd)",target=/home/ra duat /bin/bash
 ```
 
 ### Kernel
@@ -30,5 +30,5 @@ $ ./build.sh
 ### QEMU
 
 ```
-./qemu.sh
+$ ./qemu.sh
 ```

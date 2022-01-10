@@ -10,6 +10,6 @@ RUN apt-get update && apt-get install -y \
   cpio \
   ncurses-dev \
   && rm -rf /var/lib/apt/lists/*
-RUN useradd -ms /bin/bash duat
-USER duat
-WORKDIR /home/duat
+RUN useradd -ms /bin/bash ra
+USER ra
+WORKDIR /home/ra

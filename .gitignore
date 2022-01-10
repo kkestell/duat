@@ -1,9 +1,5 @@
-kernel/linux/
-user/musl/
-user/root/
-user/initramfs.gz
-obj/
-bin/
+deps/
+build/
 
 \.bash_history
 \.DS_Store

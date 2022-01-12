@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-rm -rf build iso/initramfs.gz iso/kernel.gz
+rm -rf build iso/aarch64 iso/x86_64
 
 pushd deps/linux
 make clean

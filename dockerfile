@@ -14,5 +14,6 @@ RUN apt-get update && apt-get install -y \
   ncurses-dev \
   wget \
   libssl-dev \
+  rsync \
   && rm -rf /var/lib/apt/lists/*
 WORKDIR /duat

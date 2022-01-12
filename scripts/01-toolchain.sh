@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -o xtrace
 
 mkdir -p deps
 

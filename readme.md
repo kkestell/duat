@@ -16,6 +16,12 @@ Create and SSH into the build container:
 $ ./docker.sh
 ```
 
+Set `ARCH`.
+
+```
+# export ARCH=x86_64
+```
+
 Install GCC/musl toolchain, build Linux, toybox, and an initramfs.
 
 ```
@@ -28,7 +34,7 @@ Install GCC/musl toolchain, build Linux, toybox, and an initramfs.
 Exit the build container and run in QEMU.
 
 ```
-$ ./qemu.sh
+$ ARCH=x86_64 ./qemu.sh
 ```
 
 Press `ctrl+a`, `c`, `q`, `enter` to quit QEMU.

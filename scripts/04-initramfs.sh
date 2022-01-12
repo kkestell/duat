@@ -1,25 +1,16 @@
 #!/usr/bin/env bash
+set -o xtrace
 
-rm -rf build/initramfs
+rm -rf /duat/build/$ARCH/initramfs
 
-mkdir -p build/initramfs/{bin,dev,home,mnt,proc,root,sys,tmp,var} 
-chmod a+rwxt build/initramfs/tmp
+mkdir -p /duat/build/$ARCH/initramfs/{bin,dev,home,mnt,proc,root,sys,tmp,var} 
+chmod a+rwxt /duat/build/$ARCH/initramfs/tmp
 
-pushd build/initramfs
+pushd /duat/build/$ARCH/initramfs
 
-cat > init << EOL
-#!/bin/sh
- 
-mount -t proc none /proc
-mount -t sys none /sys
- 
-exec /bin/sh
-EOL
+rsync -ar /duat/build/$ARCH/busybox/* ./
 
-chmod +x init
+mkdir -p /duat/iso/$ARCH
+find . | cpio -oHnewc | gzip --best > /duat/iso/$ARCH/initramfs.gz
 
-cp -a ../toybox/. ./bin
-
-find . | cpio -oHnewc | gzip --best > ../../iso/initramfs.gz
-
-popd # build/initramfs
+popd # build/$ARCH/initramfs

@@ -1,19 +1,28 @@
 #!/usr/bin/env bash
+set -o xtrace
 
-ARCH=x86_64
-CROSS_COMPILE=../$ARCH-linux-musl-cross/bin/$ARCH-linux-musl-
-
-if [ ! -d deps/linux ]; then
+if [ ! -d /duat/deps/linux ]; then
     git clone -b v5.15 --depth=1 https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git deps/linux
 fi
 
-cp config/linux.config deps/linux/.config
+cp /duat/config/$ARCH/linux.config /duat/deps/linux/.config
 
-mkdir -p build/linux
+pushd /duat/deps/linux
 
-pushd deps/linux
+if [ "$ARCH" = "aarch64" ]; then
+    KARCH=arm64
+else
+    KARCH=$ARCH
+fi
 
-make -j8
-cp arch/x86_64/boot/bzImage ../../iso/kernel.gz
+CROSS_COMPILE=/duat/deps/$ARCH-linux-musl-cross/bin/$ARCH-linux-musl- ARCH=$KARCH make -j8
+
+mkdir -p /duat/iso/$ARCH
+
+if [ "$ARCH" = "aarch64" ]; then
+    cp arch/$KARCH/boot/Image.gz /duat/iso/$ARCH/kernel.gz
+else
+    cp arch/$KARCH/boot/bzImage /duat/iso/$ARCH/kernel.gz
+fi
 
 popd # deps/linux

@@ -1,12 +1,4 @@
 #!/usr/bin/env bash
+set -o xtrace
 
-rm -rf build iso/initramfs.gz iso/kernel.gz
-
-pushd deps/linux
-make clean
-popd # deps/linux
-
-pushd deps/toybox
-make clean
-popd # deps/toybox
-
+rm -rf build deps iso/aarch64 iso/x86_64

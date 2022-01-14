@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
-
-# https://musl.cc/aarch64-linux-musl-cross.tgz
-
-ARCH=x86_64
+set -o xtrace
 
 mkdir -p deps
 

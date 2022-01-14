@@ -14,5 +14,9 @@ RUN apt-get update && apt-get install -y \
   ncurses-dev \
   wget \
   libssl-dev \
+  rsync \
+  xorriso \
+  grub-common \
+  grub-pc-bin \
   && rm -rf /var/lib/apt/lists/*
 WORKDIR /duat

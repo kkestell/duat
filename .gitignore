@@ -1,4 +1,3 @@
-iso/initramfs.gz
-iso/kernel.gz
+iso/*
 .DS_Store
 .bash_history

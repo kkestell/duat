@@ -1,29 +1,19 @@
 #!/usr/bin/env bash
 set -o xtrace
 
-rm -rf build/initramfs
+rm -rf /duat/build/$ARCH/initramfs
 
-mkdir -p /duat/build/$ARCH/initramfs/{bin,dev,etc/{init.d,udhcp},home,mnt,proc,root,sys,tmp,var} 
+cp -r /duat/build/$ARCH/busybox/. /duat/build/$ARCH/initramfs/
+
+mkdir -p /duat/build/$ARCH/initramfs/{bin,dev,etc/{init.d,udhcp,network},home,mnt,proc,root,sys/dev,tmp,var} 
 chmod a+rwxt /duat/build/$ARCH/initramfs/tmp
 
-pushd build/initramfs
-
-cat > init << EOL
-#!/bin/sh
- 
-mount -t proc none /proc
-mount -t sys none /sys
- 
-exec /bin/sh
-EOL
-
-cp /duat/deps/busybox/examples/udhcp/simple.script etc/udhcp/config.sh
-
-echo "::sysinit:/bin/sh" >> etc/inittab
+pushd build/$ARCH/initramfs
 
 cat > etc/inittab << EOF
 ::sysinit:/etc/init.d/rcS
 ttyS0::askfirst:/bin/sh
+::respawn:/sbin/getty 115200 /dev/tty0
 ::ctrlaltdel:/sbin/reboot
 ::shutdown:/sbin/swapoff -a
 ::shutdown:/bin/umount -a -r
@@ -39,7 +29,8 @@ mount -vt sysfs sysfs sys
 /sbin/mdev -s
 
 ip link set eth0 up
-udhcpc -i eth0 -s /etc/udhcp/simple.script
+ifconfig eth0 10.0.2.15 netmask 255.255.255.0
+route add default gw 10.0.2.2
 EOF
 chmod 0755 etc/init.d/rcS
 
@@ -59,14 +50,7 @@ cat > etc/nsswitch.conf << EOF
 hosts:      files dns
 EOF
 
-mknod dev/null c 1 3
-mknod -m 666 dev/ttyS0 c 4 64
-
 mkdir -p /duat/build/$ARCH
 find . | cpio -oHnewc | gzip --best > /duat/build/$ARCH/initramfs.gz
-
-cp -a ../toybox/. ./bin
-
-find . | cpio -oHnewc | gzip --best > ../../iso/initramfs.gz
 
 popd # build/initramfs

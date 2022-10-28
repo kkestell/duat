@@ -6,7 +6,7 @@
 
 * Linux
 * Musl
-* Toybox
+* Busybox
 
 ## Getting Started
 
@@ -16,35 +16,32 @@ Create and SSH into the build container:
 $ ./docker.sh
 ```
 
-Install GCC/musl toolchain, build Linux, toybox, and an initramfs.
+Install GCC/musl toolchain, build Linux, Busybox, an initramfs, and generate a bootable ISO.
 
 ```
-# ./scripts/01-toolchain.sh
-# ./scripts/02-linux.sh
-# ./scripts/03-toybox.sh
-# ./scripts/04-initramfs.sh
+# ./scripts/build.sh
 ```
 
 Exit the build container and run in QEMU.
 
 ```
-$ ./qemu.sh
+$ ARCH=x86_64 ./qemu.sh
 ```
-
-Press `ctrl+a`, `c`, `q`, `enter` to quit QEMU.
 
 ## Development
 
 ### Reconfiguring Linux
 
 ```
+# cd deps/linux
 # make menuconfig -j8 ARCH=x86_64 CROSS_COMPILE=../x86_64-linux-musl-cross/bin/x86_64-linux-musl-
-# cp ./.config ../../config/linux.config
+# cp ./.config ../../config/$ARCH/linux.config
 ```
 
-### Reconfiguring Toybox
+### Reconfiguring Busybox
 
 ```
+# cd deps/busybox
 # make menuconfig -j8 ARCH=x86_64 CROSS_COMPILE=../x86_64-linux-musl-cross/bin/x86_64-linux-musl-
-# cp ./.config ../../config/toybox.config
+# cp ./.config ../../config/$ARCH/busybox.config
 ```

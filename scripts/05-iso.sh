@@ -2,6 +2,7 @@
 set -o xtrace
 
 mkdir -p /duat/build/$ARCH/iso/boot/grub
+mkdir -p /duat/iso/$ARCH
 
 cat > /duat/build/$ARCH/iso/boot/grub/grub.cfg << EOF
 menuentry "Duat" {

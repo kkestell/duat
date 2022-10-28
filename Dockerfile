@@ -1,4 +1,4 @@
-FROM ubuntu:21.10
+FROM debian:bullseye
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y \
   software-properties-common \
@@ -20,3 +20,4 @@ RUN apt-get update && apt-get install -y \
   grub-pc-bin \
   && rm -rf /var/lib/apt/lists/*
 WORKDIR /duat
+ENV ARCH=x86_64

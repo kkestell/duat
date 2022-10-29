@@ -5,7 +5,7 @@ rm -rf /duat/build/$ARCH/initramfs
 
 cp -r /duat/build/$ARCH/busybox/. /duat/build/$ARCH/initramfs/
 
-mkdir -p /duat/build/$ARCH/initramfs/{bin,dev,etc/{init.d,udhcp,network},home,mnt,proc,root,sys/dev,tmp,var} 
+mkdir -p /duat/build/$ARCH/initramfs/{bin,dev,etc/init.d,home,mnt,proc,root,sys/dev,tmp,var} 
 chmod a+rwxt /duat/build/$ARCH/initramfs/tmp
 
 pushd build/$ARCH/initramfs

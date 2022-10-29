@@ -28,6 +28,13 @@ Exit the build container and run in QEMU.
 $ ARCH=x86_64 ./qemu.sh
 ```
 
+Log in as `root` (no password).
+
+```
+duat login: root
+~ #
+```
+
 ## Development
 
 ### Reconfiguring Linux

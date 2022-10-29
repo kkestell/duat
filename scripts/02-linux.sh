@@ -17,7 +17,7 @@ fi
 
 CROSS_COMPILE=/duat/deps/$ARCH-linux-musl-cross/bin/$ARCH-linux-musl- ARCH=$KARCH make -j8
 
-mkdir -p /duat/iso/$ARCH
+mkdir -p /duat/build/$ARCH
 
 if [ "$ARCH" = "aarch64" ]; then
     cp arch/$KARCH/boot/Image.gz /duat/build/$ARCH/kernel.gz

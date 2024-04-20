@@ -18,6 +18,21 @@ RUN apt-get update && apt-get install -y \
   xorriso \
   grub-common \
   grub-pc-bin \
+
+  autoconf \
+  automake \
+  libtool \
+  pkg-config \
+  gettext \
+  autopoint \
+  texinfo \
+
+  libfreetype6-dev \
+  libfontconfig1-dev \
+  libglib2.0-dev \
+  libexpat1-dev \
+  libpng-dev \
+
   && rm -rf /var/lib/apt/lists/*
 WORKDIR /duat
 ENV ARCH=x86_64

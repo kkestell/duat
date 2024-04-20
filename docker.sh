@@ -10,5 +10,6 @@ docker run \
     --mount type=bind,source="$(pwd)/iso",target=/duat/iso \
     --mount type=bind,source="$(pwd)/scripts",target=/duat/scripts \
     --mount type=bind,source="$(pwd)/src",target=/duat/src \
+    --mount type=bind,source="$(pwd)/pkg",target=/duat/pkg \
     duat \
     /bin/bash

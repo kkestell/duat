@@ -1,3 +1,6 @@
 iso/*
 .DS_Store
 .bash_history
+/pkg/*/src/
+/src/pkg/bin
+/src/pkg/obj
